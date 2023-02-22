@@ -1,12 +1,12 @@
 <?php
- 
+
 /**
  *  SAML Metadata view
  */
 
-require_once dirname(__DIR__).'/_toolkit_loader.php';
+require_once dirname(__DIR__) . '/_toolkit_loader.php';
 
-require_once 'settings.php' ;
+require_once 'settings.php';
 
 try {
     #$auth = new OneLogin_Saml2_Auth($settingsInfo);
@@ -20,7 +20,7 @@ try {
         echo $metadata;
     } else {
         throw new OneLogin_Saml2_Error(
-            'Invalid SP metadata: '.implode(', ', $errors),
+            'Invalid SP metadata: ' . implode(', ', $errors),
             OneLogin_Saml2_Error::METADATA_SP_INVALID
         );
     }
