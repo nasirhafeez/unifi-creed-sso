@@ -1,6 +1,6 @@
 <?php
 
-$spBaseUrl = 'https://sso.nasirhafeez.com/guest/s/'; //or http://<your_domain>
+$spBaseUrl = 'https://sso.nasirhafeez.com/guest/s'; //or http://<your_domain>
 
 $settingsInfo = array(
     'sp' => array(
