@@ -1,15 +1,15 @@
 <?php
 
-$spBaseUrl = 'https://sso.nasirhafeez.com/guest/s/default'; //or http://<your_domain>
+$spBaseUrl = 'https://sso.nasirhafeez.com/guest/s/'; //or http://<your_domain>
 
 $settingsInfo = array(
     'sp' => array(
-        'entityId' => $spBaseUrl . '/sso/demo1/metadata.php',
+        'entityId' => $spBaseUrl . '/default/sso/demo1/metadata.php',
         'assertionConsumerService' => array(
-            'url' => $spBaseUrl . '/sso/demo1/index.php?acs',
+            'url' => $spBaseUrl . '/default/sso/demo1/index.php?acs',
         ),
         'singleLogoutService' => array(
-            'url' => $spBaseUrl . '/sso/demo1/index.php?sls',
+            'url' => $spBaseUrl . '/default/sso/demo1/index.php?sls',
         ),
         'NameIDFormat' => 'urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified',
     ),
