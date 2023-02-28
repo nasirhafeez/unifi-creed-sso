@@ -1,11 +1,12 @@
 <?php
+
 /**
  *  SAML Handler
  */
 
 session_start();
 
-require_once dirname(__DIR__).'/_toolkit_loader.php';
+require_once dirname(__DIR__) . '/_toolkit_loader.php';
 
 require_once 'settings.php';
 
@@ -23,7 +24,7 @@ if (isset($_GET['sso'])) {
     # exit();
 
 } else if (isset($_GET['sso2'])) {
-    $returnTo = $spBaseUrl.'/demo1/attrs.php';
+    $returnTo = $spBaseUrl . '/sso/demo1/attrs.php';
     $auth->login($returnTo);
 } else if (isset($_GET['slo'])) {
     $returnTo = null;
@@ -72,9 +73,9 @@ if (isset($_GET['sso'])) {
     $errors = $auth->getErrors();
 
     if (!empty($errors)) {
-        echo '<p>',implode(', ', $errors),'</p>';
+        echo '<p>', implode(', ', $errors), '</p>';
         if ($auth->getSettings()->isDebugActive()) {
-            echo '<p>'.htmlentities($auth->getLastErrorReason()).'</p>';
+            echo '<p>' . htmlentities($auth->getLastErrorReason()) . '</p>';
         }
     }
 
@@ -109,7 +110,7 @@ if (isset($_GET['sso'])) {
     } else {
         echo '<p>', htmlentities(implode(', ', $errors)), '</p>';
         if ($auth->getSettings()->isDebugActive()) {
-            echo '<p>'.htmlentities($auth->getLastErrorReason()).'</p>';
+            echo '<p>' . htmlentities($auth->getLastErrorReason()) . '</p>';
         }
     }
 }
