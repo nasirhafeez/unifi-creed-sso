@@ -24,7 +24,7 @@ if (isset($_GET['sso'])) {
     # exit();
 
 } else if (isset($_GET['sso2'])) {
-    $returnTo = $spBaseUrl . '/sso/demo1/attrs.php';
+    $returnTo = $spBaseUrl . '/demo1/attrs.php';
     $auth->login($returnTo);
 } else if (isset($_GET['slo'])) {
     $returnTo = null;
