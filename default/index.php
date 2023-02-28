@@ -6,6 +6,9 @@ include 'config.php';
 $_SESSION["id"] = $_GET['id'];
 $_SESSION["ap"] = $_GET['ap'];
 $_SESSION["user_type"] = "new";
+echo '<pre>';
+print_r($_SESSION);
+die;
 
 # Checking DB to see if user exists or not.
 $result = mysqli_query($con, "SELECT * FROM `$table_name` WHERE mac='$_SESSION[id]'");
@@ -53,43 +56,43 @@ if ($result->num_rows >= 1) {
           <div id="login" class="content is-size-5 has-text-centered has-text-weight-bold">Enter your details</div>
           <form method="post" action="connect.php">
             <div class="field">
-                <div class="control has-icons-left">
-                    <input class="input" type="text" id="form_font" name="fname" placeholder="First Name" required>
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-user"></i>
-                    </span>
-                </div>
-            </div>
-
-            <div class="field">
               <div class="control has-icons-left">
-                  <input class="input" type="text" id="form_font" name="lname" placeholder="Last Name" required>
-                  <span class="icon is-small is-left">
-                    <i class="fas fa-user"></i>
+                <input class="input" type="text" id="form_font" name="fname" placeholder="First Name" required>
+                <span class="icon is-small is-left">
+                  <i class="fas fa-user"></i>
                 </span>
               </div>
             </div>
 
             <div class="field">
-                <div class="control has-icons-left">
-                    <input class="input" type="email" id="form_font" name="email" placeholder="Email" required>
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-envelope"></i>
-                    </span>
-                </div>
+              <div class="control has-icons-left">
+                <input class="input" type="text" id="form_font" name="lname" placeholder="Last Name" required>
+                <span class="icon is-small is-left">
+                  <i class="fas fa-user"></i>
+                </span>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="control has-icons-left">
+                <input class="input" type="email" id="form_font" name="email" placeholder="Email" required>
+                <span class="icon is-small is-left">
+                  <i class="fas fa-envelope"></i>
+                </span>
+              </div>
             </div>
             <br>
             <div class="columns is-centered is-mobile">
-                <div class="control">
-                    <label class="checkbox">
-                        <input type="checkbox" required>
-                        I agree to the <a href="policy.php">Terms of Use</a>
-                    </label>
-                </div>
+              <div class="control">
+                <label class="checkbox">
+                  <input type="checkbox" required>
+                  I agree to the <a href="policy.php">Terms of Use</a>
+                </label>
+              </div>
             </div>
             <br>
             <div class="buttons is-centered">
-                <button class="button is-link">Connect</button>
+              <button class="button is-link">Connect</button>
             </div>
           </form>
         </div>
@@ -98,4 +101,5 @@ if ($result->num_rows >= 1) {
     </div>
   </div>
 </body>
+
 </html>
