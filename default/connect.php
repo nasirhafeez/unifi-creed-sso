@@ -6,26 +6,22 @@ include 'config.php';
 $mac = $_SESSION["id"];
 $apmac = $_SESSION["ap"];
 $user_type = $_SESSION["user_type"];
+$method = $_SESSION["method"];
 $last_updated = date("Y-m-d H:i:s");
 
 if ($user_type == "new") {
-  $fname = $_POST['fname'];
-  $lname = $_POST['lname'];
-  $email = $_POST['email'];
 
   mysqli_query($con, "
     CREATE TABLE IF NOT EXISTS `$table_name` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
-    `firstname` varchar(45) NOT NULL,
-    `lastname` varchar(45) NOT NULL,
-    `email` varchar(45) NOT NULL,
     `mac` varchar(45) NOT NULL,
+    `method` varchar(45) NOT NULL,
     `last_updated` varchar(45) NOT NULL,
     PRIMARY KEY (`id`),
     UNIQUE KEY (mac)
     )");
 
-  mysqli_query($con,"INSERT INTO `$table_name` (firstname, lastname, email, mac, last_updated) VALUES ('$fname', '$lname', '$email', '$mac', '$last_updated')");
+  mysqli_query($con,"INSERT INTO `$table_name` (mac, method, last_updated) VALUES ('$mac', '$method', '$last_updated')");
 }
 
 $controlleruser = $_SERVER['CONTROLLER_USER'];
@@ -56,7 +52,6 @@ $auth_result = $unifi_connection->authorize_guest($mac, $duration, null, null, n
     <link rel="stylesheet" href="../vendor/fortawesome/font-awesome/css/all.css" />
     <meta http-equiv="refresh" content="5;url=https://www.google.com" />
     <link rel="icon" type="image/png" href="../assets/images/favicomatic/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="../assets/images/favicomatic/favicon-16x16.png" sizes="16x16" />
     <link rel="stylesheet" href="../assets/styles/style.css" />
 </head>
 

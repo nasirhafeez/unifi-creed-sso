@@ -9,6 +9,8 @@
   max-width: 100%;
   color: black;
   font-family: "Ariel", sans-serif;
+  background: black;
+  color: white;
 }
 
 .head
@@ -67,7 +69,7 @@ and (min-width: 768px)
 
   #logo
   {
-    max-width: 10%;
+    max-width: 15%;
   }
 
   .main
