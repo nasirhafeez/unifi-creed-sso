@@ -91,7 +91,7 @@ $google_login_url = 'https://accounts.google.com/o/oauth2/v2/auth?scope=' . urle
                         <div class="control has-icons-left">
                             <input class="input" type="password" name="pass" placeholder="Password" required>
                             <span class="icon is-small is-left">
-                              <i class="fas fa-user"></i>
+                              <i class="fas fa-key"></i>
                             </span>
                         </div>
                     </div>
