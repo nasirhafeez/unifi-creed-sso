@@ -3,8 +3,8 @@
 require 'header.php';
 include 'config.php';
 
-$_SESSION["id"] = $_GET['id'];
-$_SESSION["ap"] = $_GET['ap'];
+$_SESSION["id"] = htmlspecialchars($_GET['id']);
+$_SESSION["ap"] = htmlspecialchars($_GET['ap']);
 $_SESSION["user_type"] = "new";
 $_SESSION["method"] = "Form";
 $user_error = false;
@@ -18,8 +18,10 @@ if (isset($_POST['connect'])) {
   }
 }
 
-# Checking DB to see if user exists or not.
-$result = mysqli_query($con, "SELECT * FROM `$table_name` WHERE mac='$_SESSION[id]'");
+$stmt = $con->prepare("SELECT * FROM `$table_name` WHERE mac=?");
+$stmt->bind_param("s", $_SESSION['id']);
+$stmt->execute();
+$result = $stmt->get_result();
 
 if ($result->num_rows >= 1) {
   $row = mysqli_fetch_array($result);
