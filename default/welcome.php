@@ -28,13 +28,13 @@ require 'header.php';
   </div>
 
   <div class="main">
-    <seection class="section">
+    <section class="section">
       <div class="container">
         <div id="margin_zero" class="content has-text-centered is-size-6">Welcome!</div>
         <div id="margin_zero" class="content has-text-centered is-size-6">You'll be automatically authorized</div>
         <div id="margin_zero" class="content has-text-centered is-size-6">on the network in a few moments</div>
       </div>
-    </seection>
+    </section>
   </div>
 
 </div>
