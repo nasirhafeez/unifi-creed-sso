@@ -9,7 +9,7 @@ $table_name = $_SERVER['TABLE_NAME'];
 $con = mysqli_connect($host_ip, $db_user, $db_pass, $db_name);
 
 if (mysqli_connect_errno()) {
-  echo "Failed to connect to SQL: " . mysqli_connect_error();
+    echo "Failed to connect to SQL: " . mysqli_connect_error();
 }
 
 mysqli_report(MYSQLI_REPORT_OFF);

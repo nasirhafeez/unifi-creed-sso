@@ -11,7 +11,7 @@ $last_updated = date("Y-m-d H:i:s");
 
 if ($user_type == "new") {
 
-  $stmt = $con->prepare("CREATE TABLE IF NOT EXISTS `$table_name` (
+    $stmt = $con->prepare("CREATE TABLE IF NOT EXISTS `$table_name` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `mac` varchar(45) NOT NULL,
   `method` varchar(45) NOT NULL,
@@ -19,11 +19,11 @@ if ($user_type == "new") {
   PRIMARY KEY (`id`),
   UNIQUE KEY (mac)
   )");
-  $stmt->execute();
+    $stmt->execute();
 
-  $stmt = $con->prepare("INSERT INTO `$table_name` (mac, method, last_updated) VALUES (?, ?, ?)");
-  $stmt->bind_param('sss', $mac, $method, $last_updated);
-  $stmt->execute();
+    $stmt = $con->prepare("INSERT INTO `$table_name` (mac, method, last_updated) VALUES (?, ?, ?)");
+    $stmt->bind_param('sss', $mac, $method, $last_updated);
+    $stmt->execute();
 }
 
 $controlleruser = $_SERVER['CONTROLLER_USER'];

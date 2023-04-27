@@ -1,6 +1,7 @@
 <?php
 
-function check_and_create_table($con, $table_name) {
+function check_and_create_table($con, $table_name)
+{
     $check_table_query = "SHOW TABLES LIKE '$table_name'";
     $result = mysqli_query($con, $check_table_query);
 
@@ -35,12 +36,12 @@ $_SESSION["method"] = "Form";
 $user_error = false;
 
 if (isset($_POST['connect'])) {
-  $secret = $_SERVER['GUEST_SECRET'];
-  if ($secret == $_POST['pass']) {
-      header("Location: connect.php");
-  } else {
-      $user_error = true;
-  }
+    $secret = $_SERVER['GUEST_SECRET'];
+    if ($secret == $_POST['pass']) {
+        header("Location: connect.php");
+    } else {
+        $user_error = true;
+    }
 }
 
 try {
@@ -58,14 +59,14 @@ try {
 }
 
 if ($result->num_rows >= 1) {
-  $row = mysqli_fetch_array($result);
+    $row = mysqli_fetch_array($result);
 
-  mysqli_close($con);
+    mysqli_close($con);
 
-  $_SESSION["user_type"] = "repeat";
-  header("Location: welcome.php");
+    $_SESSION["user_type"] = "repeat";
+    header("Location: welcome.php");
 } else {
-  mysqli_close($con);
+    mysqli_close($con);
 }
 
 # Google login parameters
@@ -116,13 +117,13 @@ $google_login_url = 'https://accounts.google.com/o/oauth2/v2/auth?scope=' . urle
                 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                   <?php
                   if ($user_error) {
-                  ?>
+                      ?>
                     <div class="content is-size-6 has-text-centered has-text-danger">
                         Sorry, the password is incorrect
                     </div>
                   <?php
                   }
-                  ?>
+?>
                     <div class="field">
                         <div class="control has-icons-left">
                             <input class="input" type="password" name="pass" placeholder="Password" required>
