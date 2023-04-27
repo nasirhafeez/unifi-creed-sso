@@ -3,6 +3,8 @@
 require 'header.php';
 include 'config.php';
 
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
 $_SESSION["id"] = htmlspecialchars($_GET['id']);
 $_SESSION["ap"] = htmlspecialchars($_GET['ap']);
 $_SESSION["user_type"] = "new";
@@ -18,10 +20,24 @@ if (isset($_POST['connect'])) {
   }
 }
 
-$stmt = $con->prepare("SELECT * FROM `$table_name` WHERE mac=?");
-$stmt->bind_param("s", $_SESSION['id']);
-$stmt->execute();
-$result = $stmt->get_result();
+//$stmt = $con->prepare("SELECT * FROM `$table_name` WHERE mac=?");
+//$stmt->bind_param("s", $_SESSION['id']);
+//$stmt->execute();
+//$result = $stmt->get_result();
+
+try {
+    $stmt = $con->prepare("SELECT * FROM `$table_name` WHERE mac=?");
+    if ($stmt === false) {
+        throw new Exception("Failed to prepare statement: " . $con->error);
+    }
+    $stmt->bind_param("s", $_SESSION["id"]);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $stmt->close();
+} catch (Exception $e) {
+    echo "Error: " . $e->getMessage();
+    exit();
+}
 
 if ($result->num_rows >= 1) {
   $row = mysqli_fetch_array($result);
