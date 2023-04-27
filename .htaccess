@@ -1,4 +1,11 @@
-RewriteEngine On
-RewriteBase /
+# Protect .env file
+<Files .env>
+    Order allow,deny
+    Deny from all
+</Files>
 
-RewriteRule ^(index\.html|index\.php)?$ default/index.php [L]
+# Rewrite rules
+RewriteEngine On
+RewriteCond %{REQUEST_URI} ^/$ [OR]
+RewriteCond %{REQUEST_URI} ^/index\.(html|php)$
+RewriteRule ^(.*)$ default/index.php [L]
