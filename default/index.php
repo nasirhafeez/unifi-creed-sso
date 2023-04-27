@@ -43,11 +43,6 @@ if (isset($_POST['connect'])) {
   }
 }
 
-//$stmt = $con->prepare("SELECT * FROM `$table_name` WHERE mac=?");
-//$stmt->bind_param("s", $_SESSION['id']);
-//$stmt->execute();
-//$result = $stmt->get_result();
-
 try {
     $stmt = $con->prepare("SELECT * FROM `$table_name` WHERE mac=?");
     if ($stmt === false) {
