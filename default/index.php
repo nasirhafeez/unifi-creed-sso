@@ -25,11 +25,13 @@ if (mysqli_num_rows($result) == 0) {
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-$_SESSION["id"] = htmlspecialchars($_GET['id']);
-$_SESSION["ap"] = htmlspecialchars($_GET['ap']);
-$_SESSION["user_type"] = "new";
-$_SESSION["method"] = "Form";
-$user_error = false;
+if (isset($_GET['id'])) {
+  $_SESSION["id"] = htmlspecialchars($_GET['id']);
+  $_SESSION["ap"] = htmlspecialchars($_GET['ap']);
+  $_SESSION["user_type"] = "new";
+  $_SESSION["method"] = "Form";
+  $user_error = false;
+}
 
 if (isset($_POST['connect'])) {
     $secret = $_SERVER['GUEST_SECRET'];
