@@ -1,12 +1,13 @@
 <?php
 
-function check_and_create_table($con, $table_name)
-{
-    $check_table_query = "SHOW TABLES LIKE '$table_name'";
-    $result = mysqli_query($con, $check_table_query);
+require 'header.php';
+include 'config.php';
 
-    if (mysqli_num_rows($result) == 0) {
-        $create_table_query = "
+$check_table_query = "SHOW TABLES LIKE '$table_name'";
+$result = mysqli_query($con, $check_table_query);
+
+if (mysqli_num_rows($result) == 0) {
+    $create_table_query = "
             CREATE TABLE `$table_name` (
                 `id` INT AUTO_INCREMENT PRIMARY KEY,
                 `mac` VARCHAR(17) NOT NULL,
@@ -17,15 +18,10 @@ function check_and_create_table($con, $table_name)
                 `timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
             );
         ";
-        if (!mysqli_query($con, $create_table_query)) {
-            die("Error: Could not create table '$table_name': " . mysqli_error($con));
-        }
+    if (!mysqli_query($con, $create_table_query)) {
+      die("Error: Could not create table '$table_name': " . mysqli_error($con));
     }
 }
-
-require 'header.php';
-include 'config.php';
-check_and_create_table($con, $table_name);
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 

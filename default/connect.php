@@ -12,13 +12,13 @@ $last_updated = date("Y-m-d H:i:s");
 if ($user_type == "new") {
 
     $stmt = $con->prepare("CREATE TABLE IF NOT EXISTS `$table_name` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `mac` varchar(45) NOT NULL,
-  `method` varchar(45) NOT NULL,
-  `last_updated` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY (mac)
-  )");
+      `id` int(11) NOT NULL AUTO_INCREMENT,
+      `mac` varchar(45) NOT NULL,
+      `method` varchar(45) NOT NULL,
+      `last_updated` varchar(45) NOT NULL,
+      PRIMARY KEY (`id`),
+      UNIQUE KEY (mac)
+      )");
     $stmt->execute();
 
     $stmt = $con->prepare("INSERT INTO `$table_name` (mac, method, last_updated) VALUES (?, ?, ?)");
